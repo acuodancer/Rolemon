@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private ThirdPersonCharacter m_Character;   // A reference to the ThirdPersonCharacter on the object
     private CameraRaycaster cameraRaycaster;
     private Vector3 currentClickTarget;
-	private bool isInDirectMode = false; // TODO consider making static later
+	private bool isInDirectMode = false;
 	private bool m_Jump;
         
     private void Start()
@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     {
 		if (Input.GetKeyDown (KeyCode.G)) { 
 			// G for gamepad. TODO allow player to map later
+			currentClickTarget = transform.position;
 			isInDirectMode = !isInDirectMode; // toggle mode
 		}
 		if (isInDirectMode) {
@@ -48,10 +49,10 @@ public class PlayerMovement : MonoBehaviour
 		// Evaluate movement vectors
 		float h = Input.GetAxis("Horizontal");
 		float v = Input.GetAxis("Vertical");
-		Vector3 m_CamForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
-		Vector3 m_Move = v*m_CamForward + h * Camera.main.transform.right;
+		Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
+		Vector3 movement = v*cameraForward + h * Camera.main.transform.right;
 		// Pass movement vector to chracter model
-		m_Character.Move(m_Move, false, m_Jump);
+		m_Character.Move(movement, false, m_Jump);
 		m_Jump = false;
 	}
 
