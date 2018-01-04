@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 124575583690499828}
   - component: {fileID: 81370450173700056}
   - component: {fileID: 114496433473932986}
+  - component: {fileID: 114380082509200710}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -39,8 +40,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4496695609130858}
   - component: {fileID: 114112709386258868}
-  - component: {fileID: 114274885265098384}
-  - component: {fileID: 114507576241983018}
   m_Layer: 0
   m_Name: Camera Arm
   m_TagString: MainCamera
@@ -129,19 +128,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5448bf785ec68f4fae6a86c6cdfe9e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114274885265098384
+--- !u!114 &114380082509200710
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1496805425599918}
-  m_Enabled: 0
+  m_GameObject: {fileID: 1117883603672864}
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: deef9e4858edcba478c37dd4b186f612, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b3eccb0cc49ec04885a0ac936fd2a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerPriorities: 0900000008000000
-  distanceToBackground: 100
+  walkCursor: {fileID: 2800000, guid: 7b1a6d1330e6ee94aa55d28e77b55bb2, type: 3}
+  attackCursor: {fileID: 2800000, guid: 91ca5db3696eeed47953a08a2e5e57af, type: 3}
+  errorCursor: {fileID: 2800000, guid: 7ba1f412ee0a3264fae45a4edfe8060d, type: 3}
+  cursorHotspot: {x: 96, y: 96}
 --- !u!114 &114496433473932986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,17 +156,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerPriorities: 0900000008000000
   distanceToBackground: 100
---- !u!114 &114507576241983018
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1496805425599918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b3eccb0cc49ec04885a0ac936fd2a64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!124 &124575583690499828
 Behaviour:
   m_ObjectHideFlags: 1

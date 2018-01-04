@@ -922,6 +922,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4977637692773650}
   - component: {fileID: 95019017634329310}
+  - component: {fileID: 136745172186232178}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
@@ -2425,16 +2426,16 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1732725068229018}
-  m_LocalRotation: {x: -0, y: 0.97922826, z: -0, w: 0.20276117}
-  m_LocalPosition: {x: -0.32622975, y: 0.19999999, z: 5.7143555}
-  m_LocalScale: {x: 0.7717767, y: 0.4, z: 1}
+  m_LocalRotation: {x: -0, y: 0.9003374, z: -0, w: 0.43519267}
+  m_LocalPosition: {x: -2.5506794, y: 0.120000005, z: 1.3931684}
+  m_LocalScale: {x: 1, y: 0.4, z: 1}
   m_Children:
   - {fileID: 4187151393997660}
   - {fileID: 4672847293197748}
   - {fileID: 4721580996940198}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 156.60301, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 128.405, z: 0}
 --- !u!4 &4988113521910940
 Transform:
   m_ObjectHideFlags: 1
@@ -2466,6 +2467,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!136 &136745172186232178
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1732725068229018}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3
+  m_Height: 0.64
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.32, z: 0}
 --- !u!137 &137022993728502820
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
