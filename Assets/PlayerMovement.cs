@@ -33,15 +33,15 @@ public class PlayerMovement : MonoBehaviour
 				break;
 			default:
 				// Stand still
-				currentClickTarget = m_Character.transform.position;
 				return;
 			}	
         }
 		// Handle movement outside
 		Vector3 playerToClickPoint = currentClickTarget - transform.position;
-		if (playerToClickPoint.magnitude >= walkMoveStopRadius) {
-			m_Character.Move (playerToClickPoint, false, false);
+		if (playerToClickPoint.magnitude < walkMoveStopRadius) {
+			playerToClickPoint = Vector3.zero;
 		}
+		m_Character.Move (playerToClickPoint, false, false);
     }
 }
 
