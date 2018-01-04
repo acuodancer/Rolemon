@@ -659,6 +659,7 @@ GameObject:
   - component: {fileID: 13615390}
   - component: {fileID: 11469404}
   - component: {fileID: 114993081609967024}
+  - component: {fileID: 114741560396403456}
   m_Layer: 0
   m_Name: ThirdPersonController
   m_TagString: Player
@@ -1371,8 +1372,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149790}
-  m_LocalRotation: {x: 0, y: -0.99894524, z: 0, w: -0.045917608}
-  m_LocalPosition: {x: 0.66911983, y: 0.120000005, z: -3.66975}
+  m_LocalRotation: {x: -0, y: -0.258819, z: -0, w: 0.9659259}
+  m_LocalPosition: {x: 2.42, y: 0, z: -6.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 469942}
@@ -1380,7 +1381,7 @@ Transform:
   - {fileID: 448028}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -29.174002, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -30, z: 0}
 --- !u!4 &409212
 Transform:
   m_ObjectHideFlags: 1
@@ -2118,7 +2119,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164288}
-  m_LocalRotation: {x: -0.56168485, y: -0.07972469, z: 0.8162403, w: -0.109113455}
+  m_LocalRotation: {x: -0.5616849, y: -0.0797247, z: 0.8162404, w: -0.10911346}
   m_LocalPosition: {x: 0.000022283552, y: -0.00006138309, z: -0.026027031}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2406,7 +2407,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100098}
-  m_LocalRotation: {x: 0.56230485, y: 0.08250841, z: 0.8156065, w: -0.1085895}
+  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
   m_LocalPosition: {x: 0.000022246646, y: -0.00006150933, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2699,6 +2700,18 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 149790}
   m_IsPrefabParent: 1
+--- !u!114 &114741560396403456
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdc6fed5ea9465949a2a5f14c8172230, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealthPoint: 100
 --- !u!114 &114993081609967024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2711,3 +2724,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkMoveStopRadius: 0.2
+  attackMoveStopRadius: 2
