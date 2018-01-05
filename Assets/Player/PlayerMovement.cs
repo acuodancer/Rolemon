@@ -31,21 +31,21 @@ public class PlayerMovement : MonoBehaviour
 		}
 	}
 
-    // Fixed update is called in sync with physics
-    private void FixedUpdate()
-    {
-		if (Input.GetKeyDown (KeyCode.G)) { 
-			// G for gamepad. TODO allow player to map later
-			currentDestination = transform.position;
-			isInDirectMode = !isInDirectMode; // toggle mode
-		}
-		if (isInDirectMode) {
-			ProcessDirectMovement();
-		} else {
-			ProcessMouseMovement();
-
-		}
-    }
+//    // Fixed update is called in sync with physics
+//    private void FixedUpdate()
+//    {
+//		if (Input.GetKeyDown (KeyCode.G)) { 
+//			// G for gamepad. TODO allow player to map later
+//			currentDestination = transform.position;
+//			isInDirectMode = !isInDirectMode; // toggle mode
+//		}
+//		if (isInDirectMode) {
+//			ProcessDirectMovement();
+//		} else {
+//			ProcessMouseMovement();
+//
+//		}
+//    }
 
 	private void ProcessDirectMovement () {
 		// Evaluate movement vectors
@@ -58,25 +58,25 @@ public class PlayerMovement : MonoBehaviour
 		m_Jump = false;
 	}
 
-	private void ProcessMouseMovement ()
-	{
-		if (Input.GetMouseButton (0)) {
-			clickPoint = cameraRaycaster.hit.point;
-			switch (cameraRaycaster.layerHit) {
-			case Layer.Walkable:
-				currentDestination = ShortDestination(clickPoint, walkMoveStopRadius);
-				// So not set in default case
-				break;
-			case Layer.Enemy:
-				currentDestination = ShortDestination(clickPoint, attackMoveStopRadius);
-				break;
-			default:
-				// Stand still
-				return;
-			}
-		}
-		MoveTo (currentDestination);
-	}
+//	private void ProcessMouseMovement ()
+//	{
+//		if (Input.GetMouseButton (0)) {
+//			clickPoint = cameraRaycaster.hit.point;
+//			switch (cameraRaycaster.layerHit) {
+//			case Layer.Walkable:
+//				currentDestination = ShortDestination(clickPoint, walkMoveStopRadius);
+//				// So not set in default case
+//				break;
+//			case Layer.Enemy:
+//				currentDestination = ShortDestination(clickPoint, attackMoveStopRadius);
+//				break;
+//			default:
+//				// Stand still
+//				return;
+//			}
+//		}
+//		MoveTo (currentDestination);
+//	}
 
 	Vector3 ShortDestination(Vector3 destination, float shortening) {
 		Vector3 reductionVector = (destination - transform.position).normalized * shortening;
