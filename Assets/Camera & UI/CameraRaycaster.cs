@@ -2,6 +2,7 @@
 using UnityEngine.EventSystems;
 using System.Linq;
 using System.Collections.Generic;
+using System;
 
 public class CameraRaycaster : MonoBehaviour
 {
@@ -62,8 +63,10 @@ public class CameraRaycaster : MonoBehaviour
 
 	RaycastHit? FindTopPriorityHit (RaycastHit[] raycastHits)
 	{
-		// Form list of layer numbers hit
-		List<int> layersOfHitColliders = new List<int> ();
+        Array.Reverse(raycastHits);
+
+        // Form list of layer numbers hit
+        List<int> layersOfHitColliders = new List<int> ();
 		foreach (RaycastHit hit in raycastHits)
 		{
 			layersOfHitColliders.Add (hit.collider.gameObject.layer);
