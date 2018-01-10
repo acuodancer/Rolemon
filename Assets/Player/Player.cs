@@ -20,7 +20,7 @@ public class Player : MonoBehaviour, IDamageable {
     //    {
     //        Destroy(gameObject);
     //    }
-    //}
+    }
 
 	// Use this for initialization
 	void Start () {
