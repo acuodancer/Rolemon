@@ -9,7 +9,6 @@ using UnityEngine.AI;
 public class PlayerMovement : MonoBehaviour
 {
 
-
 	[SerializeField] float walkMoveStopRadius = 0.2f;
 	[SerializeField] float attackMoveStopRadius = 2.0f;
 
