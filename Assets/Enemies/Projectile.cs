@@ -6,7 +6,13 @@ public class Projectile : MonoBehaviour {
 
     // TODO consider hiding these
     public float projectileSpeed;
-    public float damageCaused;
+
+    float damageCaused;
+
+    public void SetDamageCaused(float dam)
+    {
+        damageCaused = dam;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
