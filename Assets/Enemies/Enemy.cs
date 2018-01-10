@@ -33,12 +33,17 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
-        currentHealthPoint = Mathf.Clamp(currentHealthPoint, damage, 0);
+        currentHealthPoint = Mathf.Clamp(currentHealthPoint - damage, 0f, maxHealthPoint);
+        if (currentHealthPoint <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Use this for initialization
     void Start()
     {
+        currentHealthPoint = maxHealthPoint;
         player = GameObject.FindGameObjectWithTag("Player");
         aiCharacterControl = GetComponent<AICharacterControl>();
     }
