@@ -3,25 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.ThirdPerson;
 
-public class Enemy : MonoBehaviour, IDamageable {
+public class Enemy : MonoBehaviour, IDamageable
+{
 
-	[SerializeField] float attackRadius = 2f;
-	[SerializeField] float pursueRadius = 3f;
-	[SerializeField] float maxHealthPoint = 100f;
+    [SerializeField] float pursueRadius = 3f;
+    [SerializeField] float maxHealthPoint = 100f;
+
+    [SerializeField] float attackRadius = 2f;
     [SerializeField] float damagePerShot = 10f;
+    [SerializeField] float secondsBetweenShot = 0.5f;
+    [SerializeField] Vector3 aimOffset = new Vector3(0, 1f, 0);
 
     [SerializeField] GameObject projectileToUse = null;
     [SerializeField] GameObject projectileSocket = null;
 
-	private float currentHealthPoint = 100f;
-	private AICharacterControl aiCharacterControl = null;
-	private GameObject player= null;
+    private float currentHealthPoint = 100f;
+    private AICharacterControl aiCharacterControl = null;
+    private GameObject player = null;
 
-	public float healthAsPercentage {
-		get {
-			return currentHealthPoint / maxHealthPoint;
-		}
-	}
+    bool isAttacking;
+
+    public float healthAsPercentage
+    {
+        get
+        {
+            return currentHealthPoint / maxHealthPoint;
+        }
+    }
 
     public void TakeDamage(float damage)
     {
@@ -29,38 +37,42 @@ public class Enemy : MonoBehaviour, IDamageable {
     }
 
     // Use this for initialization
-    void Start () {
-		player = GameObject.FindGameObjectWithTag ("Player");
-		aiCharacterControl = GetComponent<AICharacterControl> ();
-	}
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        aiCharacterControl = GetComponent<AICharacterControl>();
+    }
 
-	// Update is called once per frame
-	void Update () {
-		Vector3 vecToPlayer = transform.position - player.transform.position;
+    // Update is called once per frame
+    void Update()
+    {
+        Vector3 vecToPlayer = transform.position - player.transform.position;
 
-       if (vecToPlayer.magnitude <= attackRadius)
+        if (vecToPlayer.magnitude <= attackRadius && !isAttacking)
         {
-            SpawnProjectile(); // TODO slow this down
+            isAttacking = true;
+            InvokeRepeating("SpawnProjectile", 0f, secondsBetweenShot); // TODO switch to coroutine
+            aiCharacterControl.SetTarget(player.transform);
+        }
+        
+        if (vecToPlayer.magnitude > attackRadius)
+        {
+            isAttacking = false;
+            CancelInvoke();
         }
 
-		if (vecToPlayer.magnitude <= attackRadius) {
-			aiCharacterControl.SetTarget(player.transform);
-		} else {
-			if (aiCharacterControl.target != null) {
-				if (vecToPlayer.magnitude > pursueRadius) {
-					aiCharacterControl.SetTarget (null);
-				}	
-			} 
-		}
-	}
+        if (vecToPlayer.magnitude > pursueRadius && aiCharacterControl.target != null) { 
+            aiCharacterControl.SetTarget(null);
+        }
+    }
 
     private void SpawnProjectile()
     {
         GameObject newProjectile = Instantiate(projectileToUse, projectileSocket.transform.position, Quaternion.identity);
         Projectile projectileComponent = newProjectile.GetComponent<Projectile>();
-        projectileComponent.damageCaused = damagePerShot;
+        projectileComponent.SetDamageCaused(damagePerShot);
 
-        Vector3 unitVectorToPlayer = (player.transform.position - projectileSocket.transform.position).normalized;
+        Vector3 unitVectorToPlayer = (player.transform.position - projectileSocket.transform.position + aimOffset).normalized;
         float projectileSpeed = projectileComponent.projectileSpeed;
         newProjectile.GetComponent<Rigidbody>().velocity = unitVectorToPlayer * projectileSpeed;
     }

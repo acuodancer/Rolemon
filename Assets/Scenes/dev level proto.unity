@@ -1096,6 +1096,12 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114521870993213760, guid: fd810562c01db6f4082b63b069625474,
+        type: 2}
+      propertyPath: projectileToUse
+      value: 
+      objectReference: {fileID: 1389425207656658, guid: 72726e6bc5bdb534e8d49f18ac6713b4,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fd810562c01db6f4082b63b069625474, type: 2}
   m_IsPrefabParent: 0
@@ -2691,7 +2697,7 @@ Prefab:
     - target: {fileID: 114521870993213760, guid: fd810562c01db6f4082b63b069625474,
         type: 2}
       propertyPath: attackRadius
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114521870993213760, guid: fd810562c01db6f4082b63b069625474,
         type: 2}
