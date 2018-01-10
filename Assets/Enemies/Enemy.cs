@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.ThirdPerson;
 
-public class Enemy : MonoBehaviour {
+public class Enemy : MonoBehaviour, IDamageable {
 
 	[SerializeField] float viewRadius = 2f;
 	[SerializeField] float pursueRadius = 3f;
@@ -18,8 +18,13 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 
-	// Use this for initialization
-	void Start () {
+    public void TakeDamage(float damage)
+    {
+        currentHealthPoint = Mathf.Clamp(currentHealthPoint, damage, 0);
+    }
+
+    // Use this for initialization
+    void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
 		aiCharacterControl = GetComponent<AICharacterControl> ();
 	}
